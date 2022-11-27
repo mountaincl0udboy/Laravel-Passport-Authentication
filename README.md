@@ -7,60 +7,92 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Getting started
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Clone the repository
 
-## Learning Laravel
+    git clone https://github.com/ogkkk/Laravel-Passport-Authentication.git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Switch to the repo folder
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    cd Laravel-Passport-Authentication
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Install all the dependencies using composer
 
-## Laravel Sponsors
+    composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Copy the example env file and make the required configuration changes in the .env file
 
-### Premium Partners
+    cp .env.example .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Generate a new application key
 
-## Contributing
+    php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Run the database migrations (**Set the database connection in .env before migrating**)
 
-## Code of Conduct
+    php artisan migrate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Start the local development server
 
-## Security Vulnerabilities
+    php artisan serve
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+You can now access the server at http://localhost:8000
 
-## License
+**TL;DR command list**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    git clone https://github.com/ogkkk/Laravel-Passport-Authentication.git
+    cd Laravel-Passport-Authentication
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    
+**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+
+    php artisan migrate
+    php artisan serve
+    
+## Register API:
+### You can test the Laravel Passport API for registering the user:
+POST **http://localhost:8000/api/register**
+
+![image](https://user-images.githubusercontent.com/85111590/204125968-51726901-b07c-4f34-9141-5b64f795660f.png)
+
+## Login Passport API:
+### After sign up, copy the Bearer token, set into the Headers section in the Postman app. Check out the Laravel Passport Endpoint for logging-in:
+POST **http://localhost:8000/api/login**
+
+![image](https://user-images.githubusercontent.com/85111590/204126272-f7353ef4-8691-4182-9b47-acae378a90a9.png)
+
+## Passport Post Create API:
+### To perform the CRUD operation, we need to set the correct authenticity. After successful registration and login, you will receive the access token. The manifestation of access token creates coherence with authorization, and It establishes secure communication with the server. You need to set this access token as a Bearer Token in the Authorization header.
+POST **http://localhost:8000/api/posts**
+
+![image](https://user-images.githubusercontent.com/85111590/204126388-087e16cb-b351-4e35-90a9-1f93087a762b.png)
+
+## Post List API:
+GET **http://localhost:8000/api/posts**
+
+![image](https://user-images.githubusercontent.com/85111590/204126510-4b4a2b76-0acc-4a6e-8669-05671d258e05.png)
+
+## Show Single Post API:
+GET **http://localhost:8000/api/posts/{id}**
+
+![image](https://user-images.githubusercontent.com/85111590/204126585-cf1c2470-0bee-4ba5-90db-4c5ba86c0434.png)
+
+## Post Update API:
+PUT **http://localhost:8000/api/posts/{id}**
+
+![image](https://user-images.githubusercontent.com/85111590/204126667-54955a01-52cb-4c49-b2dd-4288af4bd29a.png)
+
+## Post Delete API:
+DELETE **http://localhost:8000/api/posts/{id}**
+
+![image](https://user-images.githubusercontent.com/85111590/204126732-39b16343-7482-42af-977e-2d3e844b69d3.png)
+
+## Contact me if you have any questions
+- [Instagram](https://www.instagram.com/imogk999/)
