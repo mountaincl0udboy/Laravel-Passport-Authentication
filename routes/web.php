@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Middleware\CheckStatus;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::middleware([CheckStatus::class])->group(function() {
+    Route::get('home', [HomeController::class, 'home']);
+});
 Route::get('/', function () {
     return view('welcome');
 });
